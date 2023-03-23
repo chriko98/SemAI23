@@ -1,0 +1,119 @@
+0. Intro 
+
+ex:John a foaf:Person.
+ex:John foaf:knows ex:Mary.
+
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex:   <http://www.ex.org/> .
+
+ex:John a foaf:Person.
+ex:John foaf:knows ex:Mary.
+# würde auch mit "; foaf:knows ex:Mary." funktionieren
+
+
+
+1. Simple Data Graph | 
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix :     <http://www.ex.org/person#> .
+
+:Mary a foaf:Person. 
+:Jim a foaf:Person.
+#hätte gedacht die obigen sind useless weil ':' P. impliziert
+:Mary foaf:knows :Jim.
+:Mary foaf:age 27 .  # kam in den folien vor, aber nicht im vocab zu finden...?
+
+
+
+
+2. Simple Schema | 
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix :     <http://www.ex.org/vocabulary#> .
+
+:Company a rdfs:Class .
+:Employee a rdfs:Class . #wieso brauche ich das wenn Employee eh subClassOf Person ist?
+:Person a rdfs:Class .
+
+:worksFor a rdf:Property .
+:worksFor rdfs:domain :Employee .
+:worksFor rdfs:range :Company .
+
+:salary a rdf:Property .
+:salary rdfs:domain :Employee .
+:salary rdfs:range xsd:integer .
+
+:Employee rdfs:subClassOf :Person .
+
+
+
+
+3. Reification | 
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex:   <http://www.ex.org/> .
+
+#slide 48
+
+ex:Stmt rdf:object ex:Mary .
+ex:Stmt rdf:subject ex:John .
+ex:Stmt rdf:predicate ex:loves .
+ex:Mary ex:says ex:Stmt .
+ex:Stmt rdf:type rdf:Statement .
+
+
+
+
+4. Blank Node | 
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex:   <http://www.ex.org/> .
+
+ex:John foaf:knows _:1 .
+_:1 rdf:type foaf:Person .
+_:1 foaf:knows ex:Mary .
+
+###geht auch###
+# ex:John foaf:knows [
+# rdf:type foaf:Person;
+# foaf:knows ex:Mary
+# ] .
+
+
+
+
+
+5. Multiple Classification | 
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex:   <http://www.ex.org/> .
+
+ex:John rdf:type ex:SoccerPlayer ; rdf:type ex:Student .
+
+
+
+
+
+6. Metamodeling | 
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://www.ex.org/> .
+
+ex:Dog rdf:type ex:Species ; rdfs:subClassOf ex:Animal .
+ex:Cat rdf:type ex:Species ; rdfs:subClassOf ex:Animal .
+ex:Lassie rdf:type ex:Dog .
+
+
+
+
+7. Properties
+
