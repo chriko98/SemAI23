@@ -1,0 +1,10 @@
+:Peter a :man .
+:Susi a woman .
+
+:Peter foaf:knows :Susi .
+
+:man rdfs:subClassOf :person .
+:woman rdfs:subClassOf :person .
+
+
+graph visualisieren
