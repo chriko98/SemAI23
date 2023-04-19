@@ -1,0 +1,303 @@
+
+Man kann in rdflib auch den default Graph verwenden. Der graph wird dann auch nicht als named graph gezählt in Task 6.
+z.B. 'insert { GRAPH <urn:x-rdflib:default> { ?s ?p ?o } } where ...'
+
+bzw. mit prefix:
+'@prefix xrdf: <urn:x-rdflib:  . '
+
+insert { GRAPH xrdf:default { ?s ?p ?o } } where ...
+
+
+
+[1]
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix :    <http://example.org/>
+
+INSERT DATA {
+	:G1  :author  :Mary .
+	:G2  :author  :Peter .
+}
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:G1  :author  :Mary .
+:G2  :author  :Peter .
+
+
+
+[2]
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix :    <http://example.org/>
+INSERT DATA {
+	GRAPH :G1 {
+		:Mary :knows :Peter, :John, :Mary .
+	}
+
+	GRAPH :G2 {
+		:Peter :knows :Mary. :John :knows :Mary .
+	}
+}
+
+
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:G1  :author  :Mary .
+:G2  :author  :Peter .
+:G1 {
+   :Mary :knows :Mary , :John , :Peter .
+}
+:G2 {
+   :John  :knows  :Mary .
+   :Peter :knows  :Mary .
+}
+
+
+
+[3]
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix :    <http://example.org/>
+
+INSERT {
+	?p2 :knownBy ?p1 .
+}
+WHERE {
+	GRAPH :G2 {
+		?p1 :knows ?p2 .
+	}
+}
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:G1  :author  :Mary .
+:G2  :author  :Peter .
+:Mary  :knownBy  :Peter , :John .
+:G1 {
+    :Mary  :knows  :Mary , :John , :Peter .
+}
+:G2 {
+    :John  :knows  :Mary .
+    :Peter :knows  :Mary .
+}
+
+
+
+[4]
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix :    <http://example.org/>
+
+DELETE WHERE{
+	?p2 :knownBy ?p1 .
+}
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:G1  :author  :Mary .
+:G2  :author  :Peter .
+:G1 {
+   :Mary :knows :Mary , :John , :Peter .
+}
+:G2 {
+   :John :knows :Mary .
+   :Peter  :knows  :Mary .
+}
+
+
+
+[5]
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix :    <http://example.org/>
+
+INSERT {
+	?g :knowsCount ?amount .
+}
+WHERE {
+		SELECT ?g (COUNT(?px) AS ?amount)
+		WHERE {
+			GRAPH ?g {
+				?p1 :knows ?px .
+			} 
+		} 
+		GROUP BY ?g
+}
+
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:G1 :author :Mary ;
+    :knowsCount  3 .
+:G2 :author :Peter ;
+    :knowsCount  2 .
+:G1 {
+   :Mary  :knows  :Mary , :John , :Peter . }
+:G2 {
+   :John  :knows  :Mary .
+   :Peter  :knows  :Mary . 
+}
+
+   
+
+[6]
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix :    <http://example.org/>
+
+INSERT {
+	:ds :graphCount ?count
+}
+WHERE {
+	SELECT (COUNT (?g) AS ?count)
+	WHERE {
+		GRAPH ?g {}
+	}
+}
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:G1 :author :Mary ; :knowsCount  3 .
+:ds :graphCount  2 .
+:G2 :author :Peter; :knowsCount  2 .
+:G1 { 
+	:Mary   :knows  :Mary , :John , :Peter .
+}
+:G2 { 
+	:John   :knows  :Mary . 
+	:Peter  :knows  :Mary .
+}
+
+
+
+[7]
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix :    <http://example.org/>
+
+DELETE {
+	?g ?p ?o .
+}
+INSERT {
+	GRAPH ?g {
+		?g ?p ?o .
+	}
+}
+WHERE{
+	?g ?p ?o .
+	GRAPH ?g { }
+}
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:ds  :graphCount  2 .
+:G1 { 
+	:Mary  :knows  :Mary , :John , :Peter .
+	:G1  :author  :Mary ; :knowsCount  3 .
+}
+:G2 { 
+	:John   :knows  :Mary . 
+	:G2 :author :Peter ; :knowsCount  2 .
+	:Peter  :knows  :Mary .
+}
+
+
+
+[8]
+ --- version with + 1 (easier and shorter ... aber Angabe uneindeutig) ---
+
+DELETE {
+	GRAPH ?g {
+		?g :knowsCount ?knowsCount_old .
+	}
+}
+INSERT {
+	GRAPH ?g {
+		?p :knows :Susi .
+		?g :knowsCount ?knowsCount_new .
+	}
+}
+WHERE {
+	GRAPH ?g {
+		?p1 :knows ?px .
+		?g :author ?p .
+		?g :knowsCount ?knowsCount_old
+		BIND (?knowsCount_old + 1 AS ?knowsCount_new)
+	}	
+}
+
+---version with re-count of updated graph --> 2 statements in 1 request ---
+
+
+DELETE {
+	GRAPH ?g {
+		?g :knowsCount ?knowsCount_old .
+	}
+}
+INSERT {
+	GRAPH ?g {
+		?p :knows :Susi .
+	}
+}
+WHERE {
+	GRAPH ?g {
+		?p1 :knows ?px .
+		?g :author ?p .
+		?g :knowsCount ?knowsCount_old .
+
+	}
+};
+
+INSERT { 
+	GRAPH ?g {
+		?g :knowsCount ?knowsCount_new .
+	}	
+}
+WHERE {
+	SELECT ?g (COUNT (?px) AS ?knowsCount_new)
+	WHERE {
+		GRAPH ?g {
+			?p1 :knows ?px .
+		}
+	}
+	GROUP BY ?g
+}
+
+
+Expected Dataset:
+@prefix :    <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  .
+
+:ds     :graphCount  2 .
+:G1 { 
+	:Mary   :knows  :Susi , :Mary , :John , :Peter .
+	:G1     :author      :Mary ; 	:knowsCount  4 .
+}
+:G2 {
+	:John   :knows  :Mary .
+	:G2     :author      :Peter ; :knowsCount  3 .
+	:Peter  :knows  :Susi , :Mary .
+}
+
+
+
+
+
+
+
