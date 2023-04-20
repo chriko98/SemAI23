@@ -134,6 +134,20 @@ WHERE {
 		GROUP BY ?g
 }
 
+BZW. eig müsste man :knows zählen!!
+
+INSERT {
+ ?g :knowsCount ?num .
+}
+WHERE {
+ SELECT ?g (COUNT (:knows) AS ?num)
+ WHERE {
+   GRAPH ?g {
+    ?p1 :knows ?p2 .
+   }
+ }
+ GROUP BY ?g
+}
 
 Expected Dataset:
 @prefix :    <http://example.org/> .
@@ -235,7 +249,6 @@ INSERT {
 }
 WHERE {
 	GRAPH ?g {
-		?p1 :knows ?px .
 		?g :author ?p .
 		?g :knowsCount ?knowsCount_old
 		BIND (?knowsCount_old + 1 AS ?knowsCount_new)
@@ -257,7 +270,6 @@ INSERT {
 }
 WHERE {
 	GRAPH ?g {
-		?p1 :knows ?px .
 		?g :author ?p .
 		?g :knowsCount ?knowsCount_old .
 
