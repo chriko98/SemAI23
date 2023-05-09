@@ -1,1 +1,0 @@
-java -jar semai.jar
