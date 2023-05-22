@@ -1,0 +1,133 @@
+task 1
+
+<PersonShape> a sh:NodeShape ;
+        sh:targetClass <Person> ; 
+        sh:property <PersonKnowsShape> .
+
+<PersonKnowsShape> 
+  sh:path :knows ;
+  sh:nodeKind sh:IRI ;
+  sh:message "Value is not Node Kind IRI" .
+  
+_______ 
+task 2
+
+<ManShape> a sh:NodeShape ;
+    sh:targetClass <Man> ; 
+    sh:not [ sh:class <Woman> ] .
+
+_______ 
+task 3
+
+<PersonKnowsShape> 
+    sh:targetClass <Person> ;
+    sh:path :knows ;
+    sh:class <Person> .
+	
+_______ 	
+task 4
+
+<PersonAgeShape> 
+  sh:targetClass <Person> ;
+  sh:path :age ;
+  sh:minInclusive 0 ;
+  sh:maxInclusive 150 ;
+  sh:minCount 1 ;
+  sh:maxCount 1 . 
+
+<AdultAgeShape> 
+  sh:targetClass <Adult> ;
+  sh:path :age ;
+  sh:minInclusive 19 .
+
+<SeniorAgeShape> 
+  sh:targetClass <Senior> ;
+  sh:path :age ;
+  sh:minInclusive 65 .
+
+<ChildAgeShape> 
+  sh:targetClass <Child> ;
+  sh:path :age ;
+  sh:maxInclusive 12 . 
+  
+_______   
+task 5
+
+   <PersonShape> a sh:NodeShape ;
+     sh:targetClass <Person> ;
+     sh:closed true; 
+     sh:ignoredProperties (rdf:type) ;
+     sh:property <NameShape> .   
+
+   <NameShape> 
+     sh:path :name ;
+     sh:maxCount 1 ;
+     sh:nodeKind sh:Literal ;
+     sh:datatype xsd:string .  
+	 
+_______ 	 
+task 6
+
+   <CityInCountryShape> 
+     sh:targetClass <City> ;
+     sh:path :inCountry ;
+     sh:class <Country> .
+
+   <EuropeanCityInCountryShape> 
+     sh:targetClass <EuropeanCity> ;
+     sh:path :inCountry ;
+     sh:class <EuropeanCountry> .
+
+   <AustrianCityInCountryShape> 
+     sh:targetClass <AustrianCity> ;
+     sh:path :inCountry ;
+     sh:in ( <Austria> ) . 
+	 
+_______ 	 
+task 7
+
+  <WorksForSubjectsShape> 
+    sh:targetSubjectsOf :worksFor ;
+    sh:class <Person> .
+
+  <WorksForTargetsShape> 
+    sh:targetObjectsOf :worksFor ;
+    sh:class <Organization> .
+	
+_______ 	
+task 8
+
+    <PeterShape>
+        sh:targetNode <Peter> ;
+        sh:property <PeterKnowsShape> .
+        
+    <PeterKnowsShape>
+        sh:path :knows ;
+        sh:node <PeterKnowsNodeShape> . 
+        
+    <PeterKnowsNodeShape>
+        sh:class <Man> ;
+        sh:property <PeterKnowsLivesShape> .
+    
+    <PeterKnowsLivesShape>
+        sh:path :livesIn ;
+        sh:minCount 1 ;
+        sh:in (<Austria>) .  
+		
+_______ 		
+task 9
+
+<ProductNetWeightShape>  
+      sh:targetClass <Product> ;
+      sh:path :netWeight ;
+      sh:lessThanOrEquals :grossWeight .   
+	  
+_______ 	  
+task 10
+
+<KnowsShape>
+  sh:targetObjectsOf :knows ;
+  sh:or (
+    [ sh:property [ sh:path :name; sh:minCount 1 ] ]
+    [ sh:property [ sh:path :givenName; sh:minCount 1 ]; sh:property [ sh:path :familyName; sh:minCount 1 ]]
+  ) . 

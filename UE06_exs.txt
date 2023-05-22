@@ -1,0 +1,86 @@
+<Prefixes> sh:declare 
+  [ sh:prefix "rdf";
+    sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ] ,
+  [ sh:prefix "rdfs";
+    sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ,
+  [ sh:prefix "sh";
+    sh:namespace "http://www.w3.org/ns/shacl#"^^xsd:anyURI ] ,
+  [ sh:prefix "xsd";
+    sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ] ,
+  [ sh:prefix "";
+    sh:namespace "http://example.org/properties/"^^xsd:anyURI ] ,
+  [ sh:prefix "x"; sh:namespace "http://example.org/entities/"^^xsd:anyURI ].
+
+<PersonShape> a sh:NodeShape ;
+  sh:targetClass <Person> ;
+  sh:rule [
+      a sh:SPARQLRule ;
+      sh:prefixes <Prefixes> ;
+      sh:construct """
+            CONSTRUCT { ?x a x:Person; :knownBy $this.}
+            WHERE { $this :knows ?x .}
+      """ ;
+  ] .
+  
+  
+  
+  
+  
+<PersonShape> a sh:NodeShape ;
+  sh:targetClass <Person> ;
+  sh:rule [
+      a sh:TripleRule ;
+      sh:subject [sh:path :knows ] ;
+      sh:predicate :knownBy ;
+      sh:object sh:this
+  ], [
+      a sh:TripleRule ;
+      sh:subject [sh:path :knows ] ;
+      sh:predicate rdf:type ;
+      sh:object <Person>
+  ].
+  
+  
+  
+  <PersonShape> a sh:NodeShape ;
+  sh:targetClass <Person> ;
+  sh:rule [
+      a sh:TripleRule ;
+      sh:subject sh:this ;
+      sh:predicate :hasDescendant ;
+      sh:object [sh:path :hasChild]
+  ].
+  
+  
+  :ProductShape a sh:NodeShape ;
+  sh:targetClass :Product ;
+  sh:rule [
+    a sh:TripleRule ;
+    sh:subject sh:this ;
+    sh:predicate :taxRate ;
+    sh:object [ sh:path :productCategory ;
+                sh:inversePath :taxRate
+    ]
+  ] .
+  
+  
+  :ProductShape a sh:NodeShape ;
+  sh:targetClass :Product ;
+  sh:rule [
+    a sh:TripleRule ;
+    sh:subject sh:this ;
+    sh:predicate :taxRate ;
+    sh:object [ sh:path :productCategory ]
+  ] .
+  
+  
+  
+  :TransitiveClosureShape a sh:NodeShape ;
+  sh:rule [
+    a sh:TripleRule ;
+    sh:subject sh:this ;
+    sh:predicate :hasDescendant ;
+    sh:object [ sh:path :hasChild ;
+                sh:inversePath :hasDescendant
+    ]
+  ] .
