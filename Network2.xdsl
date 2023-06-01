@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in trial version of GeNIe, which can be used for evaluation purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="A">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="B">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="C">
+			<state id="T" />
+			<state id="F" />
+			<parents>A B</parents>
+			<probabilities>0.9 0.1 0.5 0.5 0.5 0.5 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="D">
+			<state id="T" />
+			<state id="F" />
+			<parents>C</parents>
+			<probabilities>0.9 0.1 0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="E">
+			<state id="T" />
+			<state id="F" />
+			<parents>C</parents>
+			<probabilities>0.9 0.1 0.1 0.9</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.0.2919.2 EVALUATION" name="Network2">
+			<node id="A">
+				<name>A</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>351 195 447 255</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="B">
+				<name>B</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>516 195 609 257</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="C">
+				<name>C</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>425 281 527 339</position>
+				<barchart active="true" />
+			</node>
+			<node id="D">
+				<name>D</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>346 357 443 424</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="E">
+				<name>E</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>525 359 612 421</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
