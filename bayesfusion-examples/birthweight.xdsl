@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Smoking">
+			<state id="Smoker" />
+			<state id="NonSmoker" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="BirthDefect">
+			<state id="Defect" />
+			<state id="NoDefect" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="BirthWeight">
+			<state id="Low" />
+			<state id="Normal" />
+			<parents>Smoking BirthDefect</parents>
+			<probabilities>0.8 0.2 0.5 0.5 0.7 0.3 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="ChildMortality">
+			<state id="Increased" />
+			<state id="Normal" />
+			<parents>Smoking BirthDefect BirthWeight</parents>
+			<probabilities>0.95 0.05000000000000004 0.8 0.2 0.02 0.98 0.01 0.99 0.93 0.06999999999999995 0.78 0.22 0.015 0.985 0.005 0.995</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network3">
+			<node id="Smoking">
+				<name>Smoking</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>89 70 145 105</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="BirthWeight">
+				<name>Birth Weight</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>73 161 166 219</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="BirthDefect">
+				<name>Birth Defect</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>83 272 151 314</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="ChildMortality">
+				<name>Child Mortality</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>310 165 399 220</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Cloudy">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Sprinkler">
+			<state id="True" />
+			<state id="False" />
+			<parents>Cloudy</parents>
+			<probabilities>0.1 0.9 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Rain">
+			<state id="True" />
+			<state id="False" />
+			<parents>Cloudy</parents>
+			<probabilities>0.8 0.2 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="WetGrass">
+			<state id="True" />
+			<state id="False" />
+			<parents>Sprinkler Rain</parents>
+			<probabilities>0.99 0.01000000000000001 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network2">
+			<node id="Cloudy">
+				<name>Cloudy</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>628 82 677 112</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Sprinkler">
+				<name>Sprinkler</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>481 231 538 266</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Rain">
+				<name>Rain</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>775 236 816 261</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="WetGrass">
+				<name>WetGrass</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>621 399 683 437</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

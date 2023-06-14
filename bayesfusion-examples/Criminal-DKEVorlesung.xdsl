@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Criminal">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.0036 0.9964</probabilities>
+		</cpt>
+		<cpt id="Classified_as_Criminal">
+			<state id="True" />
+			<state id="False" />
+			<parents>Criminal</parents>
+			<probabilities>0.89 0.11 0.07000000000000001 0.9299999999999999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network2">
+			<node id="Criminal">
+				<name>Criminal</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>125 77 177 109</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Classified_as_Criminal">
+				<name>Classified as Criminal</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>328 68 407 117</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
