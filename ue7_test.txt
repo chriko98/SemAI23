@@ -1,0 +1,4 @@
+axiom der class A ist immer richtig --> di ebeiden p ox oy müssen dasselbe object sein.
+
+auch wenn ox p oy, oz --> mehr als 1 --> sollte in closed world nicht class "subclass of p max 1" sein können,
+ABER: open world assumption -> oy & oz könnten dasselbe o sein.
