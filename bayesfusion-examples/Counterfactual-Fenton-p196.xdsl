@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Sex">
+			<state id="Female" />
+			<state id="Male" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Drug_Taken">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Recovery">
+			<state id="True" />
+			<state id="False" />
+			<parents>Sex Drug_Taken</parents>
+			<probabilities>0.2 0.8 0.3 0.7 0.6 0.4 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Drug_Taken">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Recovery">
+			<state id="True" />
+			<state id="False" />
+			<parents>Sex Copy_of_Drug_Taken</parents>
+			<probabilities>0.2 0.8 0.3 0.7 0.6 0.4 0.7 0.3</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network1">
+			<node id="Sex">
+				<name>Sex</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>310 59 358 89</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Drug_Taken">
+				<name>Drug Taken</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>82 51 150 93</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Recovery">
+				<name>Recovery</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>190 179 281 209</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_Drug_Taken">
+				<name>Drug Taken</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>565 44 633 86</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_Recovery">
+				<name>Copy of Recovery</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>433 188 524 218</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

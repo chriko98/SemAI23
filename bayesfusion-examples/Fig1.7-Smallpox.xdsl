@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Vaccination">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Reaction">
+			<state id="True" />
+			<state id="False" />
+			<parents>Vaccination</parents>
+			<probabilities>0.1 0.9 0 1</probabilities>
+		</cpt>
+		<cpt id="Smallpox">
+			<state id="True" />
+			<state id="False" />
+			<parents>Vaccination</parents>
+			<probabilities>0.01 0.99 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Death">
+			<state id="True" />
+			<state id="False" />
+			<parents>Reaction Smallpox</parents>
+			<probabilities>1 0 1 0 1 0 0 1</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network2">
+			<node id="Vaccination">
+				<name>Vaccination</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>707 195 764 230</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Reaction">
+				<name>Reaction</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>589 344 646 379</position>
+				<barchart active="true" />
+			</node>
+			<node id="Smallpox">
+				<name>Smallpox</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>839 351 896 386</position>
+				<barchart active="true" />
+			</node>
+			<node id="Death">
+				<name>Death</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>715 484 772 519</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

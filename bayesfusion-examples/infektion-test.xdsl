@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Infektion">
+			<state id="infiziert" />
+			<state id="nicht_infiziert" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Test">
+			<state id="positiv" />
+			<state id="negativ" />
+			<parents>Infektion</parents>
+			<probabilities>0.99 0.01000000000000001 0.01000000000000001 0.99</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network3">
+			<node id="Infektion">
+				<name>Infektion</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>91 65 147 100</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Test">
+				<name>Test</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>300 67 341 92</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

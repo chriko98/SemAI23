@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Infiziert">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="hat_Symptome">
+			<state id="True" />
+			<state id="False" />
+			<parents>Infiziert</parents>
+			<probabilities>0.7 0.3 0.02 0.98</probabilities>
+		</cpt>
+		<cpt id="Test_positiv">
+			<state id="True" />
+			<state id="False" />
+			<parents>Infiziert</parents>
+			<probabilities>0.95 0.05000000000000004 0.1 0.9</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network1">
+			<node id="Infiziert">
+				<name>Infiziert</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>374 121 425 152</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="hat_Symptome">
+				<name>hat Symptome</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>236 269 316 319</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Test_positiv">
+				<name>Test positiv</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>459 271 527 313</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="CourtOrder">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Captain">
+			<state id="True" />
+			<state id="False" />
+			<parents>CourtOrder</parents>
+			<probabilities>0.999 0.001000000000000001 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="SoldierA">
+			<state id="True" />
+			<state id="False" />
+			<parents>Captain</parents>
+			<probabilities>0.999 0.001000000000000001 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="SoldierB">
+			<state id="True" />
+			<state id="False" />
+			<parents>Captain</parents>
+			<probabilities>0.999 0.001000000000000001 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="Death">
+			<state id="True" />
+			<state id="False" />
+			<parents>SoldierA SoldierB</parents>
+			<probabilities>1 0 1 0 1 0 0 1</probabilities>
+		</cpt>
+		<cpt id="Copy_of_CourtOrder">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Captain">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_of_CourtOrder</parents>
+			<probabilities>0.999 0.001000000000000001 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="Copy_of_SoldierA">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Copy_of_SoldierB">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_of_Captain</parents>
+			<probabilities>0.999 0.001000000000000001 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Death">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_of_SoldierA Copy_of_SoldierB</parents>
+			<probabilities>1 0 1 0 1 0 0 1</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network1">
+			<node id="CourtOrder">
+				<name>Court Order</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>216 32 284 74</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Captain">
+				<name>Captain</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>222 170 274 202</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="SoldierA">
+				<name>SoldierA</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>51 291 107 326</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="SoldierB">
+				<name>SoldierB</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>351 288 407 323</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Death">
+				<name>Death</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>215 413 261 441</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_CourtOrder">
+				<name>Court Order</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>762 40 830 82</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_Captain">
+				<name>Captain</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>770 180 822 212</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_SoldierA">
+				<name>SoldierA</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>591 293 647 328</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_SoldierB">
+				<name>SoldierB</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>891 290 947 325</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_Death">
+				<name>Death</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>763 423 809 451</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

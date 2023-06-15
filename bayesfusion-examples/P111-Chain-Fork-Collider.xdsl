@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Fire">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="Smoke">
+			<state id="True" />
+			<state id="False" />
+			<parents>Fire</parents>
+			<probabilities>0.99 0.01000000000000001 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Alarm">
+			<state id="True" />
+			<state id="False" />
+			<parents>Smoke</parents>
+			<probabilities>0.99 0.01000000000000001 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Age_of_Child">
+			<state id="Six" />
+			<state id="Seven" />
+			<state id="Eight" />
+			<state id="Nine" />
+			<probabilities>0.25 0.25 0.25 0.25</probabilities>
+		</cpt>
+		<cpt id="Shoe_Size">
+			<state id="size31" />
+			<state id="size32" />
+			<state id="size33" />
+			<state id="size34" />
+			<state id="size35" />
+			<parents>Age_of_Child</parents>
+			<probabilities>0.2 0.4 0.2 0.1 0.1 0.1 0.2 0.4 0.2 0.09999999999999992 0.1 0.1 0.2 0.4 0.2 0.1 0.1 0.2 0.2 0.4</probabilities>
+		</cpt>
+		<cpt id="Reading_Ability">
+			<state id="Low" />
+			<state id="Basic" />
+			<state id="Fluent" />
+			<parents>Age_of_Child</parents>
+			<probabilities>0.8 0.2 0 0.4 0.5 0.1 0.2 0.6 0.2 0.1 0.4 0.5</probabilities>
+		</cpt>
+		<cpt id="Talent">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Beauty">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Celebrity">
+			<state id="True" />
+			<state id="False" />
+			<parents>Talent Beauty</parents>
+			<probabilities>0.1 0.9 0.05 0.95 0.05 0.95 0 1</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 3.0.6518.0 ACADEMIC" name="Network3">
+			<node id="Fire">
+				<name>Fire</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>134 121 174 146</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Smoke">
+				<name>Smoke</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>129 255 178 285</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Alarm">
+				<name>Alarm</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>132 419 178 447</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<textbox>
+				<caption>Chain</caption>
+				<font color="000000" name="Times New Roman" size="16" italic="true" />
+				<position>121 34 174 57</position>
+			</textbox>
+			<textbox>
+				<caption>Mediator</caption>
+				<font color="000000" name="Times New Roman" size="16" italic="true" />
+				<position>33 213 113 236</position>
+			</textbox>
+			<node id="Age_of_Child">
+				<name>Age of Child</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>452 165 523 209</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="Shoe_Size">
+				<name>Shoe Size</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>346 343 408 381</position>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Reading_Ability">
+				<name>Reading Ability</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>532 329 614 380</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<textbox>
+				<caption>Fork</caption>
+				<font color="000000" name="Times New Roman" size="16" italic="true" />
+				<position>467 59 509 82</position>
+			</textbox>
+			<textbox>
+				<caption>Confounder</caption>
+				<font color="000000" name="Times New Roman" size="16" italic="true" />
+				<position>554 177 657 200</position>
+			</textbox>
+			<textbox>
+				<caption>Collider</caption>
+				<font color="000000" name="Times New Roman" size="16" italic="true" />
+				<position>868 56 939 79</position>
+			</textbox>
+			<node id="Talent">
+				<name>Talent</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>793 193 839 221</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Beauty">
+				<name>Beauty</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>998 191 1049 222</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Celebrity">
+				<name>Celebrity</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>873 343 968 373</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
